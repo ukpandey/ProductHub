@@ -11,6 +11,22 @@ public class MyProducts {
 	private String pname;
 	private int quantity;
 	private String storage_id;
+	
+	public MyProducts() {
+		super();
+	}
+
+	public MyProducts(int pid, String ptype, String pname, int quantity, String storage_id, int price, int warranty) {
+		super();
+		this.pid = pid;
+		this.ptype = ptype;
+		this.pname = pname;
+		this.quantity = quantity;
+		this.storage_id = storage_id;
+		this.price = price;
+		this.warranty = warranty;
+	}
+
 	private int price;
 	private int warranty;
 	

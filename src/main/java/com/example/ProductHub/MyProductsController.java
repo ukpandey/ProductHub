@@ -50,25 +50,25 @@ public class MyProductsController {
 		return service.fetchByName(pname);
 	}
 	
-	@PostMapping("add")
-	public ResponseEntity<?> saveProduct(@RequestBody MyProducts product) {
+	@PostMapping(value="add", consumes = "application/json")
+	public ResponseEntity<MyProductsResponse> saveProduct(@RequestBody MyProducts product) {
 		
 		if(product.getPname() == null) {
-			 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save product.");
+			 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MyProductsResponse( null,"Failed to save product."));
 		}
 	    if(service.existsById(product.getPid())) {
-	          return ResponseEntity.badRequest().body("Product with ID " + product.getPid() + " already exists.");
+	          return ResponseEntity.badRequest().body(new MyProductsResponse(product ,"Product with ID " + product.getPid() + " already exists."));
 	    }
 	        
 	    MyProducts savedProduct = service.saveMyProduct(product);
 	    if(savedProduct != null) {
-	         return ResponseEntity.ok("Product saved successfully: " + savedProduct);
+	         return ResponseEntity.ok().body(new MyProductsResponse(savedProduct, "Product saved successfully"));
 	    }
 	    else {
-	         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save product.");
+	         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MyProductsResponse(null, "Failed to save product."));
 	    }
 	 }
-	
+   
 	@PutMapping("edit")
 	public ResponseEntity<MyProducts> updateProduct(@RequestBody MyProducts updatedProduct) {
 	        // Check if the product with the given id exists
@@ -95,3 +95,4 @@ public class MyProductsController {
 	 }
 
 }
+
