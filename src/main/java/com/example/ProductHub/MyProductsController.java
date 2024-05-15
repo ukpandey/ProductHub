@@ -50,28 +50,32 @@ public class MyProductsController {
 		return service.fetchByName(pname);
 	}
 	
-	@PostMapping(value="add", consumes = "application/json")
-	public ResponseEntity<MyProductsResponse> saveProduct(@RequestBody MyProducts product) {
+	@PostMapping("add")
+	public ResponseEntity<MyProductsResponse> saveProduct(@RequestBody MyProducts product){
 		
 		if(product.getPname() == null) {
-			 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MyProductsResponse( null,"Failed to save product."));
+			 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					 .body(new MyProductsResponse("Failed to save product."));
 		}
+		
 	    if(service.existsById(product.getPid())) {
-	          return ResponseEntity.badRequest().body(new MyProductsResponse(product ,"Product with ID " + product.getPid() + " already exists."));
+	          return ResponseEntity.badRequest()
+	        		  .body(new MyProductsResponse("Product with ID " + product.getPid() + " already exists."));
 	    }
 	        
 	    MyProducts savedProduct = service.saveMyProduct(product);
 	    if(savedProduct != null) {
-	         return ResponseEntity.ok().body(new MyProductsResponse(savedProduct, "Product saved successfully"));
+	         return ResponseEntity.ok()
+	        		 .body(new MyProductsResponse(savedProduct, "Product saved successfully"));
 	    }
 	    else {
-	         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MyProductsResponse(null, "Failed to save product."));
+	         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	        		 .body(new MyProductsResponse("Failed to save product."));
 	    }
 	 }
    
 	@PutMapping("edit")
-	public ResponseEntity<MyProducts> updateProduct(@RequestBody MyProducts updatedProduct) {
-	        // Check if the product with the given id exists
+	public ResponseEntity<MyProducts> updateProduct(@RequestBody MyProducts updatedProduct){
 	        if (!service.existsById(updatedProduct.getPid())) {
 	            return ResponseEntity.notFound().build();
 	        }
@@ -82,7 +86,7 @@ public class MyProductsController {
 
 	        // Return the updated product
 	        return ResponseEntity.ok(savedProduct);
-	    }
+	}
 	  
 	@DeleteMapping("id/{id}")
 	public ResponseEntity<String> deleteProduct(@PathVariable int id){
@@ -91,7 +95,7 @@ public class MyProductsController {
 	    }
 	        
 	    service.removeProduct(id);
-	       return new ResponseEntity<String>("Record with "+id+ "deleted", HttpStatus.OK);
+	       return new ResponseEntity<String>("Record with "+id+ " deleted", HttpStatus.OK);
 	 }
 
 }

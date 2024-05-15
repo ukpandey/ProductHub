@@ -4,8 +4,8 @@ public class MyProductsResponse {
     private MyProducts products;
     private String message;
     
-    
-    public MyProducts getProducts() {
+
+	public MyProducts getProducts() {
 		return products;
 	}
 
@@ -27,6 +27,12 @@ public class MyProductsResponse {
 
 	public MyProductsResponse(MyProducts products, String message) {
         this.products = products;
+        this.message = message;
+    }
+	public MyProductsResponse(MyProducts products) {
+        this.products = products;
+    }
+	public MyProductsResponse(String message) {
         this.message = message;
     }
 }
