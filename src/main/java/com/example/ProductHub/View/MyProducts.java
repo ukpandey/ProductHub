@@ -1,4 +1,4 @@
-package com.example.ProductHub;
+package com.example.ProductHub.View;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,4 +1,4 @@
-package com.example.ProductHub;
+package com.example.ProductHub.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.ProductHub.Service.MyProductsService;
+import com.example.ProductHub.View.MyProducts;
+import com.example.ProductHub.View.MyProductsResponse;
 
 @RestController
 @RequestMapping("/myproducts")

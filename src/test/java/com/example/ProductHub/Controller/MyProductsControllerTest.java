@@ -1,4 +1,4 @@
-package com.example.ProductHub;
+package com.example.ProductHub.Controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -22,6 +22,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import com.example.ProductHub.Service.MyProductsService;
+import com.example.ProductHub.View.MyProducts;
+import com.example.ProductHub.View.MyProductsResponse;
 
 public class MyProductsControllerTest {
     

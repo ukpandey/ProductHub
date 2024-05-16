@@ -1,10 +1,13 @@
-package com.example.ProductHub;
+package com.example.ProductHub.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.ProductHub.Repository.MyProductsRepository;
+import com.example.ProductHub.View.MyProducts;
 
 @Service
 public class MyProductsService {

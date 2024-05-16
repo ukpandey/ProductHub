@@ -1,4 +1,4 @@
-package com.example.ProductHub;
+package com.example.ProductHub.View;
 
 public class MyProductsResponse {
     private MyProducts products;

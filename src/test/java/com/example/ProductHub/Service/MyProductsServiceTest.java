@@ -1,4 +1,4 @@
-package com.example.ProductHub;
+package com.example.ProductHub.Service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -20,6 +20,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import com.example.ProductHub.Repository.MyProductsRepository;
+import com.example.ProductHub.View.MyProducts;
 
 public class MyProductsServiceTest {
 
